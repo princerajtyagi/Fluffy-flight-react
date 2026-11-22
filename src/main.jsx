@@ -1,17 +1,33 @@
-// src/main.jsx
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import { BrowserRouter } from 'react-router-dom';
-import App from './App';
-import './index.css'; // Your big CSS file
-import { GameProvider } from './context/GameContext'; // 1. Import the provider
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App.jsx";
+import { BrowserRouter } from "react-router-dom";
+import { GameProvider } from "./context/GameContext";
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+import {
+  ApolloClient,
+  InMemoryCache,
+  ApolloProvider,
+  HttpLink
+} from "@apollo/client";
+
+import './index.css';
+
+const client = new ApolloClient({
+  link: new HttpLink({
+    uri: "http://localhost:4000/graphql",
+  }),
+  cache: new InMemoryCache(),
+});
+
+ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <GameProvider> {/* 2. Wrap your app */}
+    <ApolloProvider client={client}>
       <BrowserRouter>
-        <App />
+        <GameProvider>          {/* ⭐ FIX HERE */}
+          <App />
+        </GameProvider>
       </BrowserRouter>
-    </GameProvider> {/* 3. Close the wrapper */}
+    </ApolloProvider>
   </React.StrictMode>
 );

@@ -75,10 +75,11 @@ function Home() {
             </div>
 
             <div className="nav-links" role="menubar">
-              <a href="#home" role="menuitem">Home</a>
-              <a href="#about" role="menuitem">About</a>
-              <a href="#faq" role="menuitem">FAQ</a>
-              <a href="#contact" role="menuitem">Contact</a>
+              <Link to="/" role="menuitem">Home</Link>
+              <Link to="/about" role="menuitem">About</Link>
+              <Link to="/faq" role="menuitem">FAQ</Link>
+              <Link to="/contact" role="menuitem">Contact</Link>
+              <Link to="/leaderboard" role="menuitem">Leaderboard</Link> {/* NEW */}
             </div>
 
             {/* Mobile hamburger */}
@@ -149,7 +150,7 @@ function Home() {
                   <g className="wing">
                     <path d="M100 120c-20 10-24 20-38 32 32 36 62-4 52 8 6-8 16-46-14-40z" fill="url(#wingGrad)" />
                   </g>
-                  <path d="M88 93c-40 -12-6 -1-9 18 20-6 28-10" fill="#51A2FF" />
+                  <path d="M88 93 C 60 81, 82 92, 79 111 C 99 105, 108 101, 116 98" fill="#51A2FF" />
                 </g>
               </svg>
               <span className="hint">Tip: Tap “Play Now” to begin!</span>
